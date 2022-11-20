@@ -1,11 +1,17 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
   const Logo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+        height: 300,
+        width: 350,
+        child: Image.asset(
+          'assets/logo/logo.png',
+          height: 300,
+          width: 350,
+        ));
   }
 }
