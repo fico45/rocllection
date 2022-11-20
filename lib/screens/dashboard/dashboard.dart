@@ -14,11 +14,17 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(),
-        child: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return StoneListTile();
-          },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: StoneListTile(),
+              );
+            },
+          ),
         ),
       ),
     );

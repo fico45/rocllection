@@ -7,22 +7,39 @@ class StoneListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      splashColor: Theme.of(context).colorScheme.primaryContainer,
-      splashFactory: InkRipple.splashFactory,
-      child: ListTile(
-        leading: Padding(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Theme.of(context).colorScheme.onTertiaryContainer,
+        ),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: InkWell(
+        onTap: () {},
+        splashColor: Theme.of(context).colorScheme.primaryContainer,
+        splashFactory: InkRipple.splashFactory,
+        child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Image.network(
-            'https://www.stockvault.net/data/2012/09/10/135306/thumb16.jpg',
-            height: 400,
-            width: 100,
-            fit: BoxFit.cover,
+          child: ListTile(
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 4,
+            ),
+            leading: Image.network(
+              'https://www.stockvault.net/data/2012/09/10/135306/thumb16.jpg',
+              height: 400,
+              width: 100,
+              fit: BoxFit.cover,
+            ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text('Stone name'),
+                const Text('Added: 10/11/2022')
+              ],
+            ),
+            subtitle: const Text('Short description of the stone'),
           ),
         ),
-        title: const Text('Stone name'),
-        subtitle: const Text('Short description of the stone'),
       ),
     );
   }
