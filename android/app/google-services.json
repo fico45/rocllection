@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "364786578936",
+    "project_id": "rocllection",
+    "storage_bucket": "rocllection.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364786578936:android:861879068121330387920d",
+        "android_client_info": {
+          "package_name": "com.example.rocllection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364786578936-emn1o0q4nnlmf4h9siora3koqo36ehim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7YNtp5rLVOYsiF83bJOvw4NNYk_s-Mjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364786578936-emn1o0q4nnlmf4h9siora3koqo36ehim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
