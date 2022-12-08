@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:rocllection/data/stone/stone_model.dart';
 import 'package:rocllection/screens/stone_details/stone_details_screen.dart';
 
 class StoneListTile extends StatelessWidget {
-  const StoneListTile({super.key});
-
+  const StoneListTile({super.key, required this.stone});
+  final Stone stone;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,8 +16,10 @@ class StoneListTile extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (builder) => StoneDetailsScreen()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (builder) => StoneDetailsScreen(stone: stone)));
         },
         splashColor: Theme.of(context).colorScheme.primaryContainer,
         splashFactory: InkRipple.splashFactory,
@@ -28,20 +29,20 @@ class StoneListTile extends StatelessWidget {
             contentPadding: const EdgeInsets.symmetric(
               vertical: 4,
             ),
-            leading: Image.network(
-              'https://www.stockvault.net/data/2012/09/10/135306/thumb16.jpg',
-              height: 400,
-              width: 100,
-              fit: BoxFit.cover,
+            leading: Hero(
+              tag: stone.id,
+              child: Image.network(
+                stone.imageUrl,
+                height: 400,
+                width: 100,
+                fit: BoxFit.cover,
+              ),
             ),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('Stone name'),
-                const Text('Added: 10/11/2022')
-              ],
+              children: [Text(stone.name), Text('Added: ${stone.addedDate}')],
             ),
-            subtitle: const Text('Short description of the stone'),
+            subtitle: Text(stone.description),
           ),
         ),
       ),
