@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:rocllection/screens/stone_details/stone_details_screen.dart';
 
 class StoneListTile extends StatelessWidget {
   const StoneListTile({super.key});
@@ -15,7 +16,10 @@ class StoneListTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (builder) => StoneDetailsScreen()));
+        },
         splashColor: Theme.of(context).colorScheme.primaryContainer,
         splashFactory: InkRipple.splashFactory,
         child: Padding(
