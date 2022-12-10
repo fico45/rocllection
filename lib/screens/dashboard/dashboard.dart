@@ -17,7 +17,7 @@ class _DashboardState extends State<Dashboard> {
       body: ListView(
         shrinkWrap: true,
         children: [
-          Center(
+          const Center(
             child: Logo(),
           ),
           for (var i = 0; i < 10; i++)
@@ -26,12 +26,13 @@ class _DashboardState extends State<Dashboard> {
                   const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
               child: StoneListTile(
                 stone: Stone(
-                    addedDate: DateTime.now().toString(),
-                    description: 'Short description',
-                    id: '$i',
-                    imageUrl:
-                        'https://www.stockvault.net/data/2012/09/10/135306/thumb16.jpg',
-                    name: 'Stone $i'),
+                  addedDate: DateTime.now().toString(),
+                  description: 'Short description',
+                  id: '$i',
+                  imageUrl:
+                      'https://www.thoughtco.com/thmb/OSJY6PDpC4WJSaQMyKF8KEgsGnk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Olivine-58bd84db5f9b58af5cbd7fff.jpg',
+                  name: 'Stone $i',
+                ),
               ),
             ),
         ],

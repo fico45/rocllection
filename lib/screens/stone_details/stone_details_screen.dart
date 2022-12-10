@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:palette_generator/palette_generator.dart';
 import 'package:rocllection/data/stone/stone_model.dart';
+import 'package:rocllection/services/palette_generator.dart';
 
-class StoneDetailsScreen extends StatelessWidget {
+class StoneDetailsScreen extends StatefulWidget {
   const StoneDetailsScreen({super.key, required this.stone});
   final Stone stone;
+
+  @override
+  State<StoneDetailsScreen> createState() => _StoneDetailsScreenState();
+}
+
+class _StoneDetailsScreenState extends State<StoneDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +24,9 @@ class StoneDetailsScreen extends StatelessWidget {
             height: 400,
             width: double.infinity,
             child: Hero(
-              tag: stone.id,
+              tag: widget.stone.id,
               child: Image.network(
-                stone.imageUrl,
+                widget.stone.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -31,18 +37,38 @@ class StoneDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  stone.name,
+                  widget.stone.name,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 Text(
-                  stone.description,
+                  widget.stone.description,
                   style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],
             ),
+          ),
+          FutureBuilder(
+            future: updatePaletteGenerator(widget.stone.imageUrl),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                PaletteGenerator paletteGenerator =
+                    snapshot.data as PaletteGenerator;
+                return Container(
+                  height: 100,
+                  width: double.infinity,
+                  color: paletteGenerator.dominantColor?.color,
+                );
+              } else {
+                return Container(
+                  height: 100,
+                  width: double.infinity,
+                  color: Colors.red,
+                );
+              }
+            },
           ),
         ],
       ),
