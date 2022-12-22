@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rocllection/data/stone/stone_provider.dart';
 import 'package:rocllection/screens/dashboard/dashboard.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:rocllection/themes/theme_data.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'firebase_options.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -24,13 +27,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rockllection',
-      theme: ThemeData(
-          useMaterial3: true,
-          colorSchemeSeed: Colors.brown,
-          scaffoldBackgroundColor: const Color(0xFFE5E5E5)),
-      home: Dashboard(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => StoneProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Rockllection',
+        theme: CustomTheme.light,
+        /* ThemeData(
+            useMaterial3: true,
+            colorSchemeSeed: Colors.brown,
+            scaffoldBackgroundColor: const Color(0xFFE5E5E5)) */
+        home: Dashboard(),
+      ),
     );
   }
 }

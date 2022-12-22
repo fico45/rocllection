@@ -5,5 +5,6 @@ Future<PaletteGenerator> updatePaletteGenerator(String imageUrl) async {
   PaletteGenerator paletteGenerator = await PaletteGenerator.fromImageProvider(
     Image.network(imageUrl).image,
   );
+  print('Color: ${paletteGenerator.dominantColor?.color}');
   return paletteGenerator;
 }

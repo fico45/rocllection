@@ -4,6 +4,7 @@ class Stone {
   final String description;
   final String imageUrl;
   final String addedDate;
+  final String color;
 
   Stone({
     required this.id,
@@ -11,6 +12,7 @@ class Stone {
     required this.description,
     required this.imageUrl,
     required this.addedDate,
+    required this.color,
   });
 
   factory Stone.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class Stone {
       description: json['description'],
       imageUrl: json['imageUrl'],
       addedDate: json['addedDate'],
+      color: json['color'],
     );
   }
 
@@ -30,6 +33,7 @@ class Stone {
       'description': description,
       'imageUrl': imageUrl,
       'addedDate': addedDate,
+      'color': color,
     };
   }
 }

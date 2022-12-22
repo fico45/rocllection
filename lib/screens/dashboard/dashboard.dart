@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:rocllection/data/stone/stone_model.dart';
+import 'package:rocllection/data/stone/stone_provider.dart';
 import 'package:rocllection/screens/dashboard/widgets/stone_list_tile.dart';
 import 'package:rocllection/widgets/logo.dart';
 
@@ -12,30 +14,37 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final stoneProvider = Provider.of<StoneProvider>(context);
     return Scaffold(
-      body: ListView(
-        shrinkWrap: true,
-        children: [
-          const Center(
-            child: Logo(),
-          ),
-          for (var i = 0; i < 10; i++)
-            Padding(
+      body: RefreshIndicator(
+        onRefresh: () async => stoneProvider.loadAllStones(),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: stoneProvider.stones.length,
+          itemBuilder: (context, index) {
+            final Stone stone = stoneProvider.stones[index];
+            print(index);
+            return Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
               child: StoneListTile(
                 stone: Stone(
-                  addedDate: DateTime.now().toString(),
-                  description: 'Short description',
-                  id: '$i',
-                  imageUrl:
-                      'https://www.thoughtco.com/thmb/OSJY6PDpC4WJSaQMyKF8KEgsGnk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Olivine-58bd84db5f9b58af5cbd7fff.jpg',
-                  name: 'Stone $i',
-                ),
+                    addedDate: stone.addedDate,
+                    description: stone.description,
+                    id: stone.id,
+                    imageUrl: stone.imageUrl,
+                    name: stone.name,
+                    color: stone.color),
               ),
-            ),
-        ],
+            );
+          },
+        ),
       ),
     );
   }
