@@ -18,59 +18,53 @@ class _StoneDetailsScreenState extends State<StoneDetailsScreen> {
       appBar: AppBar(
         title: const Text('Stone details'),
       ),
-      body: ListView(
-        children: [
-          Container(
-            height: 400,
-            width: double.infinity,
-            child: Hero(
-              tag: widget.stone.id,
-              child: Image.network(
-                widget.stone.imageUrl,
-                fit: BoxFit.cover,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(int.parse(widget.stone.color)).withOpacity(0.1),
+              Color(int.parse(widget.stone.color)).withOpacity(0.3),
+            ],
+          ),
+        ),
+        child: ListView(
+          children: [
+            SizedBox(
+              height: 400,
+              width: double.infinity,
+              child: Hero(
+                tag: widget.stone.id,
+                child: Image.network(
+                  widget.stone.imageUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.stone.name,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  widget.stone.description,
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.stone.name,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    widget.stone.description,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                ],
+              ),
             ),
-          ),
-          FutureBuilder(
-            future: updatePaletteGenerator(widget.stone.imageUrl),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                PaletteGenerator paletteGenerator =
-                    snapshot.data as PaletteGenerator;
-                return Container(
-                  height: 100,
-                  width: double.infinity,
-                  color: paletteGenerator.dominantColor?.color,
-                );
-              } else {
-                return Container(
-                  height: 100,
-                  width: double.infinity,
-                  color: Colors.red,
-                );
-              }
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

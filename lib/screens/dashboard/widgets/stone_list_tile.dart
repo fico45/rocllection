@@ -50,13 +50,16 @@ class StoneListTile extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ClipRRect(
-                        borderRadius: Globals.listTileBorderRadius,
-                        child: Image.network(
-                          stone.imageUrl,
-                          width: imageWidth,
-                          height: imageHeight,
-                          fit: BoxFit.cover,
+                      Hero(
+                        tag: stone.id,
+                        child: ClipRRect(
+                          borderRadius: Globals.listTileBorderRadius,
+                          child: Image.network(
+                            stone.imageUrl,
+                            width: imageWidth,
+                            height: imageHeight,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       const SizedBox(width: Globals.itemtemSpacing),
