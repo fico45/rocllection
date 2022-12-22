@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rocllection/data/stone/stone_model.dart';
-import 'package:rocllection/screens/stone_details/stone_details_screen.dart';
+import 'package:rocllection/modules/stone/stone_details/stone_details_screen.dart';
 import 'package:rocllection/utils/globals.dart';
 
 class StoneListTile extends StatelessWidget {

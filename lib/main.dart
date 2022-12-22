@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rocllection/data/stone/stone_provider.dart';
-import 'package:rocllection/screens/dashboard/dashboard.dart';
+import 'package:rocllection/modules/dashboard/dashboard.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:rocllection/themes/theme_data.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

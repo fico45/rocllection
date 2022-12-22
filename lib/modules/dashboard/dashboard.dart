@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rocllection/data/stone/stone_model.dart';
 import 'package:rocllection/data/stone/stone_provider.dart';
-import 'package:rocllection/screens/dashboard/widgets/stone_list_tile.dart';
+import 'package:rocllection/modules/dashboard/widgets/stone_list_tile.dart';
 import 'package:rocllection/utils/globals.dart';
 import 'package:rocllection/widgets/logo.dart';
 
